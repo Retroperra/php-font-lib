@@ -28,6 +28,21 @@ class Font {
       }
 
     $header = file_get_contents($file, false, null, 0, 4);
+
+    if ($header === "wOF2") {
+            require_once dirname(__FILE__) . "/WOFF2/Converter.php";
+
+            $tmp = tempnam(sys_get_temp_dir(), 'w2f');
+            file_put_contents($tmp, \FontLib\WOFF2\Converter::toSfnt(file_get_contents($file)));
+
+            // The tempfile has to live while the font is used. It will be removed by the end of the script
+            register_shutdown_function(function () use ($tmp) {
+                @unlink($tmp);
+            });
+
+            return self::load($tmp);
+        }
+    
     $class  = null;
 
     switch ($header) {
