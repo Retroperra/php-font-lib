@@ -3,7 +3,7 @@
 # PHP Font Lib
 
 This library can be used to:
- * Read TrueType, OpenType (with TrueType glyphs), WOFF font files
+ * Read TrueType, OpenType (with TrueType glyphs), WOFF, WOFF2 font files
  * Extract basic info (name, style, etc)
  * Extract advanced info (horizontal metrics, glyph names, glyph shapes, etc)
  * Make an Adobe Font Metrics (AFM) file from a font
